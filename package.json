@@ -1,0 +1,38 @@
+{
+  "name": "@jsoncv/core",
+  "version": "0.1.0",
+  "description": "JSON CV's Core Functionalities",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "author": {
+    "name" : "Amin Zabardast",
+    "email" : "aminzabardast@gmail.com",
+    "url" : "https://AminZabardast.com"
+  },
+  "keywords": [
+    "json schema",
+    "academic cv",
+    "cv",
+    "academic resume",
+    "resume"
+  ],
+  "scripts": {
+    "serve": "tsc -w"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsoncv/core.git"
+  },
+  "homepage": "https://github.com/jsoncv/core#readme",
+  "bugs": {
+    "url": "https://github.com/jsoncv/core/issues"
+  },
+  "files": ["lib/**/*"],
+  "devDependencies": {
+    "typescript": "^4.3.5",
+    "@tsconfig/node14": "^1.0.1"
+  }
+}
