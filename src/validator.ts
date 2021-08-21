@@ -9,7 +9,15 @@ const ajv = new Ajv()
 const _validate = (cv:object, schema:object):void => {
     const validate = ajv.compile(schema)
     const valid = validate(cv)
-    if (!valid) console.log(validate.errors)
+    if (valid) {
+        console.log('No Errors Found')
+    } else {
+        validate.errors?.forEach(error => {
+            console.log('The CV is not valid!')
+            console.log('Errors:')
+            console.log(error)
+        })
+    }
 }
 
 const validator = (cv:any):void => {
