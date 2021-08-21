@@ -8,11 +8,9 @@ This package contains the core functionality related to JSON CV such as CLI, GUI
 ## Contents
 - [Installation](#installation)
 - [Toolset](#toolset)
-  - [CV Validator](#validator)
+  - [CV Validator](#json-cvs-validator)
 
 ## Installation
-
-<a name="installation"></a>
 
 ```shell
 npm install --save @jsoncv/core
@@ -22,11 +20,7 @@ yarn add @jsoncv/core
 
 ## Toolset
 
-<a name="toolset"></a>
-
 ### JSON CV's Validator
-
-<a name="validator"></a>
 
 Validator can be used to validate a JSON CV.
 
