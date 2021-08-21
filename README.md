@@ -31,10 +31,8 @@ yarn add @jsoncv/core
 Validator can be used to validate a JSON CV.
 
 ```ts
-import { cvValidator } from '@jsoncv/core'
-```
+import { validator } from '@jsoncv/core'
 
-```ts
-const cv // Loaded CV from someplace local or online
+const cv  // ... Loaded CV from someplace local or online
 cvValidator(cv)
 ```
