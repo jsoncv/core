@@ -28,5 +28,5 @@ Validator can be used to validate a JSON CV.
 import { validator } from '@jsoncv/core'
 
 const cv  // ... Loaded CV from someplace local or online
-cvValidator(cv)
+validator(cv)
 ```
