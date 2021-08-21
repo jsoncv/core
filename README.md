@@ -1,7 +1,7 @@
 # JSON CV Core
 
-[![GitHub Releases](https://badgen.net/github/tag/jsoncv/core)](https://github.com/jsoncv/schema/releases)
-[![NPM Release](https://badgen.net/npm/v/@jsoncv/core)](https://www.npmjs.com/package/@jsoncv/schema)
+[![GitHub Releases](https://badgen.net/github/tag/jsoncv/core)](https://github.com/jsoncv/core/releases)
+[![NPM Release](https://badgen.net/npm/v/@jsoncv/core)](https://www.npmjs.com/package/@jsoncv/core)
 
 This package contains the core functionality related to JSON CV such as CLI, GUI, templates etc.
 
