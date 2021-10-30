@@ -1,3 +1,7 @@
 import validator from './validator'
+import server from './server'
 
-export { validator }
+export {
+    validator,
+    server
+}
