@@ -1,38 +1,23 @@
-import fs from 'fs'
 import Ajv from 'ajv'
-import axios from 'axios'
+import { loadCvFile, loadSchema} from './utils'
 
-const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi;
-const regex = new RegExp(expression);
 const ajv = new Ajv()
 
-const _validate = (cv:object, schema:object):void => {
-    const validate = ajv.compile(schema)
-    const valid = validate(cv)
-    if (valid) {
-        console.log('No Errors Found')
-    } else {
-        validate.errors?.forEach(error => {
-            console.log('The CV is not valid!')
-            console.log('Errors:')
-            console.log(error)
-        })
-    }
-}
+const validate = (schema:object) => ajv.compile(schema)
 
-const validator = (cv:any):void => {
-    const schemaLocation:string = cv.$schema
-    if (schemaLocation.match(regex)) {
-        axios.get(schemaLocation).then((response) => {
-            const schema = response.data
-            _validate(cv, schema)
-        })
-    } else {
-        fs.readFile(schemaLocation, 'utf-8', (err, data) => {
-            const schema = JSON.parse(data)
-            _validate(cv, schema)
-        })
-    }
+const validator = async (cvLocation:string) => {
+    const cv = loadCvFile(cvLocation)
+    const schemaLocation = cv.$schema
+    const schema = await loadSchema(schemaLocation)
+    return new Promise((resolve, reject) => {
+        const ajvValidate = validate(schema)
+        const valid = ajvValidate(cv)
+        if (valid) {
+            resolve(true)
+        } else {
+            reject(ajvValidate.errors)
+        }
+    })
 }
 
 export default validator
