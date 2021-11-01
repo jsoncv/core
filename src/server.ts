@@ -1,6 +1,16 @@
-import { isLocationAbsolute, loadCvFile } from './utils'
+import { isLocationAbsolute, loadFile } from './utils'
 import { cwd } from 'process'
 import http, { IncomingMessage, RequestListener, ServerResponse } from 'http'
+const requireg = require('requireg')
+
+const checkIfThemeIsGloballyAvailable = (name:string):boolean => {
+    return requireg.resolve(name) !== undefined
+}
+
+const getGlobalThemeLocation = (name:string):string => {
+    const location = requireg.resolve(name).toString().trim()
+    return location.substring(0, location.indexOf("/index.js"))
+}
 
 const loadTemplateModule = async (templateLocation:string) => {
     const absoluteLocation = isLocationAbsolute(templateLocation) ? `${templateLocation}/index.js` : `${cwd()}/${templateLocation}/index.js`
@@ -8,12 +18,15 @@ const loadTemplateModule = async (templateLocation:string) => {
 }
 
 const server = {
-    serve: (templateLocation:string, cvLocation:string, port:number=2314):void => {
-        loadTemplateModule(templateLocation)
+    serve: (template:string, cvLocation:string, port:number=2314):void => {
+        if (checkIfThemeIsGloballyAvailable(template)) {
+            template = getGlobalThemeLocation(template)
+        }
+        loadTemplateModule(template)
             .then(templateModule => {
                 console.log(`Running on http://localhost:${port}`)
-                const listener:RequestListener = (req:IncomingMessage, res:ServerResponse) => {
-                    const cv = loadCvFile(cvLocation)
+                const listener:RequestListener = async (req:IncomingMessage, res:ServerResponse) => {
+                    const cv = await loadFile(cvLocation)
                     res.writeHead(200, { 'content-type': 'text/html' })
                     res.write(templateModule.render(cv))
                     res.end()
