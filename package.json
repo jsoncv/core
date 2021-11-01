@@ -1,13 +1,13 @@
 {
   "name": "@jsoncv/core",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "JSON CV's Core Functionalities",
   "license": "MIT",
   "main": "lib/index.js",
   "author": {
-    "name" : "Amin Zabardast",
-    "email" : "aminzabardast@gmail.com",
-    "url" : "https://AminZabardast.com"
+    "name": "Amin Zabardast",
+    "email": "aminzabardast@gmail.com",
+    "url": "https://AminZabardast.com"
   },
   "keywords": [
     "json schema",
@@ -33,7 +33,8 @@
   "files": ["lib/**/*"],
   "dependencies": {
     "ajv": "^8.6.2",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "requireg": "^0.2.2"
   },
   "devDependencies": {
     "typescript": "^4.3.5",
