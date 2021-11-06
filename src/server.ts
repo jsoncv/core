@@ -1,24 +1,10 @@
-import { isLocationAbsolute, loadFile } from './utils'
-import { cwd } from 'process'
+import {
+    loadFile,
+    checkIfThemeIsGloballyAvailable,
+    loadTemplateModule,
+    getGlobalThemeLocation
+} from './utils'
 import http, { IncomingMessage, RequestListener, ServerResponse } from 'http'
-const requireg = require('requireg')
-
-// Checking availability of the globally installed theme by name
-const checkIfThemeIsGloballyAvailable = (name:string):boolean => {
-    return requireg.resolve(name) !== undefined
-}
-
-// Getting the location of the globally installed theme by name
-const getGlobalThemeLocation = (name:string):string => {
-    const location = requireg.resolve(name).toString().trim()
-    return location.substring(0, location.indexOf("/index.js"))
-}
-
-// Dynamically loading the theme as a module
-const loadTemplateModule = async (templateLocation:string) => {
-    const absoluteLocation = isLocationAbsolute(templateLocation) ? `${templateLocation}/index.js` : `${cwd()}/${templateLocation}/index.js`
-    return import(absoluteLocation)
-}
 
 const server = {
     // Serving the CV as a webserver
