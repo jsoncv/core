@@ -10,6 +10,7 @@ This package contains the core functionality related to JSON CV such as CLI, GUI
 - [Toolset](#toolset)
   - [CV Validator](#json-cvs-validator)
   - [Template Server](#json-cvs-template-server)
+  - [Export to HTML](#json-cvs-export-to-html)
 
 ## Installation
 
@@ -49,4 +50,17 @@ const cvLocation  // ... Location or URL of a JSONCV file
 const template  // ... Location of a valid JSONCV template or name of a globally installed template
 const port  // ... server port number
 server.serve(template, cvLocation, port)
+```
+
+### JSON CV's Export to HTML
+
+The exporter will load a valid JSON CV and a valid template and save the converted version as HTML file.
+
+```ts
+import { exportToHtml } from '@jsoncv/core'
+
+const cvLocation  // ... Location or URL of a JSONCV file
+const template  // ... Location of a valid JSONCV template or name of a globally installed template
+const outputLocation  // ... Location of the output HTML file
+exportToHtml(template, cvLocation, outputLocation)
 ```
