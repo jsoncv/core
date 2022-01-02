@@ -1,6 +1,6 @@
 {
   "name": "@jsoncv/core",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "JSON CV's Core Functionalities",
   "license": "MIT",
   "main": "lib/index.js",
@@ -17,7 +17,8 @@
     "resume"
   ],
   "scripts": {
-    "serve": "tsc -w -d"
+    "serve": "tsc -w -d",
+    "build": "tsc -d"
   },
   "engines": {
     "node": ">=14.15.0"
